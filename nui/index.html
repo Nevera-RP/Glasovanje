@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src ="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Voting UI</title>
+  </head>
+  <body>
+    <div class="press-e" id="press-e">Press [E] to vote!</div>
+    <div class="noti" id="noti">
+      <div class="notitext">You have successfully voted!</div> 
+      <div class="noti1" id="noti1"></div>
+      <div class="noti2" id="noti2">&#10004;</div>
+    </div>
+
+    <main id="main">
+      <div id="main-header" class="main-header">
+        <p class="white-text main-header-text" id="main-header-text">Don't forget to vote!</p>
+        <div class="header-button-container">
+          <button class="header-button" id="admin-btn">ADMIN</button>
+          <button class="header-button" id="main-btn">MAIN</button> 
+          <button class="close-button" id="close-btn">X</button>
+        </div>
+      </div>
+    
+      <div id="admin-menu" class="admin-menu">
+        <div class="admin-menu-column">
+          <p class="white-text admin-menu-column-text">Add Option</p>
+          <button class="header-button" id="add-btn">ADD</button>
+        </div>
+        <div class="admin-menu-column">
+          <p class="white-text admin-menu-column-text">Start Voting</p>
+          <button class="header-button" id="start-btn">START</button>
+        </div>
+        <div class="admin-menu-column">
+          <p class="white-text admin-menu-column-text">Finish Voting</p>
+          <button class="header-button" id="finish-btn">FINISH</button>
+        </div>
+        <div class="admin-menu-column">
+          <p class="white-text admin-menu-column-text">Reset Voting</p>
+          <button class="header-button" id="reset-btn">RESET</button>
+        </div>
+      </div>
+      
+      <div id="candidates-container" class="candidates-container">
+      </div>
+
+      <form>
+        <!-- Bunu document.querySelector('form') ile alcaksin -->
+        <div class="form-div-container">
+          <label for="heading" class="white-text bold-text">Title</label>
+          <input
+            id="heading"
+            required
+            type="text"
+            placeholder="Enter Heading"
+            maxlength="32"
+          />
+        </div>
+        <div class="form-div-container">
+          <label for="heading" class="white-text bold-text">Details</label>
+          <input
+            id="details"
+            class="details-input"
+            placeholder="Enter details"
+            name="text"
+            wrap="soft"
+            required
+            maxlength="85"
+            style="overflow: hidden; resize: none"
+          >
+        </div>
+        <div class="form-div-container">
+          <label for="heading" class="white-text bold-text"
+            >Image URL (Optional)</label
+          >
+          <input id="image-url" type="text" placeholder="Enter URL" />
+        </div>
+        <div class="form-buttons-container">
+          <button class="header-button" type="submit">SUBMIT</button>
+          <button class="header-button" id="submit-cancel">CANCEL</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
