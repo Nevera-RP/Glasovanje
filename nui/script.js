@@ -10,7 +10,6 @@ arrowIcons = document.querySelectorAll(".wrapper i");
 let isDragStart = false, isDragging = false, prevPageX, prevScrollLeft, positionDiff;
 
 const dragStart = (e) => {
-    // updatating global variables value on mouse down event
     isDragStart = true;
     prevPageX = e.pageX || e.touches[0].pageX;
     prevScrollLeft = carousel.scrollLeft;
@@ -18,7 +17,6 @@ const dragStart = (e) => {
 }
 
 const dragging = (e) => {
-    // scrolling images/carousel to left according to mouse pointer
     if(!isDragStart) return;
     e.preventDefault();
     isDragging = true;
@@ -44,29 +42,6 @@ carousel.addEventListener("touchmove", dragging);
 
 document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("touchend", dragStop);
-// container.addEventListener("mousedown", (event) => {
-//   isDragging = true;
-//   startPosition = event.clientX;
-//   container.classList.add("dragging");
-// });
-
-// container.addEventListener("mousemove", (event) => {
-//   if (!isDragging) return;
-//   const currentPosition = event.clientX;
-//   const diff = currentPosition - startPosition;
-//   container.scrollLeft = currentTranslate - diff;
-// });
-
-// container.addEventListener("mouseup", () => {
-//   isDragging = false;
-//   container.classList.remove("dragging");
-//   currentTranslate = container.scrollLeft;
-// });
-
-// container.addEventListener("mouseleave", () => {
-//   isDragging = false;
-//   container.classList.remove("dragging");
-// });
 
 window.addEventListener('message', (event) => {
   const type = event.data.type
@@ -221,28 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 }, false);
 
-/**
- * Default IMG BURDAN DEGISILIYO
- */
 const defaultImgURL =
   "https://cdn.openart.ai/stable_diffusion/85a03fa10f01a88a870833d33a67cde302a92711_2000x2000.webp";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // FORMA EVENT LISTENER EKLIYORUM
-  document.querySelector("form").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent the default form submission
 
-    // BUNLAR FORMU GIZLEYIP ADAYLAR KISMINI TEKRAR GETIRMEK ICIN
+  document.querySelector("form").addEventListener("submit", (event) => {
+    event.preventDefault(); 
+
     document.getElementById("main-header").style.display = "flex";
     document.getElementById("main-header-text").textContent = "Admin Action Menu"  
     document.getElementById("admin-menu").style.display = "flex"
     document.querySelector("form").style.display = "none";
 
-    // OYUNCUNUN YAZDIGI SEYLERI ALIYORUM
     const heading = document.getElementById("heading").value;
     const details = document.getElementById("details").value;
     const imgURL = document.getElementById("image-url").value;
-    // YAZDIKLARIYLA YENI CANDIDATE DIV OLUSTURUYORUM
+
     axios.post(`https://${GetParentResourceName()}/createCandidate`, {
       heading, details, imgURL
     })
